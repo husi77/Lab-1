@@ -1,0 +1,34 @@
+class LinkedList
+{
+protected:
+    Node* first;
+    Node* last;
+public:
+    LinkedList() { first = nullptr; last = nullptr; }
+    LinkedList(const LinkedList& other);
+    virtual ~LinkedList();
+    virtual void insertAtLast(int) = 0;
+    virtual void insertAtFirst(int) = 0;
+    virtual int removeFromFirst() = 0;
+    virtual int removeFromLast() = 0;
+    virtual bool isEmpty() = 0;
+    virtual void display() = 0;
+};
+
+LinkedList::LinkedList(const LinkedList& other)
+{
+    first = nullptr;
+    last = nullptr;
+}
+
+LinkedList::~LinkedList()
+{
+    Node* temp;
+    while (first != nullptr)
+    {
+        temp = first;
+        first = first->next;
+        delete temp;
+    }
+    last = nullptr;
+}
